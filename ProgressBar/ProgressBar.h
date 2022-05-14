@@ -11,14 +11,14 @@
 
 class ProgressBar{
 public:
-    int amount = 0;
+    int total = 0;
     int now = 0;
 
 
     
 
     void Show(){
-        int finish = now*100/amount;
+        int finish = now*100/total;
         std::cout << "[" ;
 
         while(finish --){
