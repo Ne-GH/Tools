@@ -7,26 +7,42 @@
 #define PROGRESSBAR_H
 
 #include <iostream>
-
+using std::cin;
+using std::cout;
+using std::endl;
+#if defined(_WIN32) || defined(_WIN64)
+    #include "windows_lib.h"
+#elif defined(__unix__) || defined(__linux__)
+    #define "linux_lib.h"
+#endif
 
 class ProgressBar{
 public:
-    int total = 0;
-    int now = 0;
+    int _total = 0;
+    int _now = 0;
 
+    ProgressBar(int total,int now):_total(total),_now(now){
 
-    
+    }
 
     void Show(){
-        int finish = now*100/total;
-        std::cout << "[" ;
-
-        while(finish --){
-            std::cout << "\033[31m#" << "\033[0m";
+        SetColor(0x9);
+        int completed = _now * 70 / _total;
+        cout << "[";
+        for(int i = 0;i < completed; ++i){
+            cout << "#";
         }
+        for(int i = completed;i < 70; ++i){
+            cout << "_";
+        }
+        cout << "]";
 
-        std::cout << "]";
+        printf("%4d%\n",completed);
+
+        SetColor(0x7);
     }
+    
+
 };
 
 

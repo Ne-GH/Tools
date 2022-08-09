@@ -10,10 +10,12 @@ using namespace std;
 
 int main(int argc,char *argv[]){
 
-    ProgressBar pb;
-    pb.amount = 70;
-    pb.now = 7;
-    pb.Show();
+    ProgressBar pb(100,10);
+
+    for(int i = 0;i < 10; ++i){
+        pb.Show();
+        pb._now ++;
+    }
 
 
 
