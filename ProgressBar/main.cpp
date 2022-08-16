@@ -6,6 +6,9 @@
 #include "./ProgressBar.h"
 #include <unistd.h>
 
+using std::cout;
+using std::endl;
+using std::setw;
 int main(){
 
     ProgressBar pb(0,100);
@@ -13,6 +16,7 @@ int main(){
     
     for(int i = 0;i < 100; ++i,++ pb){
         String bar = pb.GetProgressBar();
+        cout << setw(55) << i << endl;
         std::cout << bar << " " << pb.GetPercentage() << "\r";
         Sleep(1);
     }
