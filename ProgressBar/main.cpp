@@ -9,15 +9,14 @@
 int main(){
 
     ProgressBar pb(0,100);
-    pb.SetWide(100);
-
-    for(int i = 0;i < 100; ++i){
-        pb.SetNow(i);
-        std::cout << std::setw(100) << i << std::endl;
-        pb.Show();
-        usleep(50000);
+    pb.SetWide(50);
+    
+    for(int i = 0;i < 100; ++i,++ pb){
+        String bar = pb.GetProgressBar();
+        std::cout << bar << " " << pb.GetPercentage() << "\r";
+        Sleep(1);
     }
 
-
+    std::cout << std::endl;
     return 0;
 }
